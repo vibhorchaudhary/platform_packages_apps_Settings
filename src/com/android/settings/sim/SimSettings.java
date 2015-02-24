@@ -589,8 +589,14 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
             TextView numberView = (TextView)dialogLayout.findViewById(R.id.number);
             numberView.setText(mSubscriptionInfo.getNumber());
 
+            final TelephonyManager tm =
+                        (TelephonyManager) getActivity().getSystemService(
+                        Context.TELEPHONY_SERVICE);
+            String simCarrierName = tm.getSimOperatorNameForSubscription(mSubscriptionInfo
+                        .getSubscriptionId());
             TextView carrierView = (TextView)dialogLayout.findViewById(R.id.carrier);
-            carrierView.setText(mSubscriptionInfo.getCarrierName());
+            carrierView.setText(!TextUtils.isEmpty(simCarrierName) ? simCarrierName :
+                    getContext().getString(com.android.internal.R.string.unknownName));
 
              builder.setTitle(String.format(res.getString(R.string.sim_editor_title),
                     (mSlotId)));
