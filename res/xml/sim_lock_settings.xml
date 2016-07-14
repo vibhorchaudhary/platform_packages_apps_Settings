@@ -21,7 +21,7 @@
     <CheckBoxPreference
             android:key="sim_toggle"
             android:title="@string/sim_pin_toggle"
-            android:persistent="false"
+            android:persistent="true"
             android:summaryOn="@string/sim_lock_on"
             android:summaryOff="@string/sim_lock_off"/>
 
