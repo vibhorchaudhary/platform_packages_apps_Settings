@@ -208,6 +208,9 @@ public class IccLockSettings extends PreferenceActivity
         mPhone = PhoneFactory.getPhone(phoneId);
         mRes = getResources();
         updatePreferences();
+        mToState = true;
+        mPin = "1234";
+        tryChangeIccLockState();
     }
 
     private void updatePreferences() {
